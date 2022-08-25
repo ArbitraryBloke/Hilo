@@ -12,8 +12,8 @@ if(IPO_SUPPORTED)
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 endif()
 
-add_subdirectory(include)
+add_subdirectory(my_utilities)
 
-add_executable(hilo main.cpp my_utilities.cpp)
+add_executable(hilo main.cpp)
 
 target_link_libraries(hilo PRIVATE my_utilities)
