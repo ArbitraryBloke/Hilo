@@ -17,4 +17,5 @@ add_subdirectory(my_utilities)
 
 add_executable(hilo main.cpp)
 
-target_link_libraries(hilo PRIVATE my_utilities game)
+target_link_libraries(game PRIVATE my_utilities)
+target_link_libraries(hilo PRIVATE game)

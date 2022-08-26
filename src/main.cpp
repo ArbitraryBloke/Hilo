@@ -3,6 +3,6 @@
 
 int main()
 {
-    print_message(true);
+    run_game();
     return 0;
 }
