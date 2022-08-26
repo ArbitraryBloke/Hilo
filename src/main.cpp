@@ -1,8 +1,8 @@
 
-#include"my_utilities.h"
+#include "game.h"
 
 int main()
 {
-    do_something();
+    print_message(true);
     return 0;
 }

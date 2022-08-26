@@ -12,8 +12,9 @@ if(IPO_SUPPORTED)
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 endif()
 
+add_subdirectory(game)
 add_subdirectory(my_utilities)
 
 add_executable(hilo main.cpp)
 
-target_link_libraries(hilo PRIVATE my_utilities)
+target_link_libraries(hilo PRIVATE my_utilities game)
