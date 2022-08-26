@@ -4,8 +4,8 @@
 
 #ifndef HILO_MY_UTILITIES_H
 #define HILO_MY_UTILITIES_H
+#include<string_view>
 
-void do_something();
-
+int get_int(std::string_view msg);
 
 #endif //HILO_MY_UTILITIES_H
