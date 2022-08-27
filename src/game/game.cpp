@@ -5,16 +5,35 @@
 #include"my_utilities.h"
 #include<iostream>
 #include<string>
+#include<cassert>
 
-void print_message(bool is_too_low)
+enum class Message
 {
-    if(is_too_low)
+    GUESS_TOO_HIGH,
+    GUESS_TOO_LOW,
+    GUESS_CORRECT,
+    WELCOME,
+};
+void print_message(const Message& message,int num_of_tries=0)
+{
+    switch (message)
     {
-        std::cout<<"The number is too low.\n";
-    }
-    else
-    {
-        std::cout<<"The number is too high.\n";
+
+        case Message::GUESS_TOO_HIGH:
+            std::cout<<"Your guess is too high.\n";
+            break;
+        case Message::GUESS_TOO_LOW:
+            std::cout<<"Your guess is too low.\n";
+            break;
+        case Message::GUESS_CORRECT:
+            std::cout<<"Correct! You've won!\n";
+            break;
+        case Message::WELCOME:
+            std::cout<<"Let's play! I'm thinking of a number. You have "
+                     <<num_of_tries<<" tries to guess what it is.\n";
+            break;
+        default:
+            assert(false && "Wrong enumeration constant was passed.");
     }
 }
 void init_game(int num_of_tries)
@@ -29,5 +48,5 @@ void init_game(int num_of_tries)
 }
 void run_game()
 {
-    init_game(3);
+    print_message(Message::WELCOME);
 }

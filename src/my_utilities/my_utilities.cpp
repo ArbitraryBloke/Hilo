@@ -5,6 +5,7 @@
 #include<iostream>
 #include<string_view>
 #include<limits>
+#include<random>
 
 void ignore_line()
 {
@@ -29,4 +30,10 @@ int get_int(std::string_view msg)
             return num;
         }
     }
+}
+int get_random_int(int first, int last)
+{
+    std::mt19937 gen(std::random_device{}());
+    std::uniform_int_distribution<> distribution(first,last);
+    return distribution(gen);
 }

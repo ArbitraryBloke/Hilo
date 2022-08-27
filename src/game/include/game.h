@@ -2,10 +2,9 @@
 // Created by ajay on 8/26/22.
 //
 
-#ifndef HILO_HILO_H
-#define HILO_HILO_H
+#ifndef HILO_GAME_H
+#define HILO_GAME_H
 
-void print_message(bool is_too_low);
 void run_game();
 
-#endif //HILO_HILO_H
+#endif //HILO_GAME_H
