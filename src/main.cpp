@@ -3,6 +3,6 @@
 
 int main()
 {
-    run_game();
+    run_game(5);
     return 0;
 }

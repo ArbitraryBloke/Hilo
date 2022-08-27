@@ -13,6 +13,8 @@ enum class Message
     GUESS_TOO_LOW,
     GUESS_CORRECT,
     WELCOME,
+    REPLAY_ASK,
+    END_GAME,
 };
 void print_message(const Message& message,int num_of_tries=0)
 {
@@ -32,21 +34,65 @@ void print_message(const Message& message,int num_of_tries=0)
             std::cout<<"Let's play! I'm thinking of a number. You have "
                      <<num_of_tries<<" tries to guess what it is.\n";
             break;
+        case Message::REPLAY_ASK:
+            std::cout<<"Would you like to play again?\n";
+            break;
+        case Message::END_GAME:
+            std::cout<<"Bye!\n";
+            break;
         default:
             assert(false && "Wrong enumeration constant was passed.");
     }
 }
+bool ask_for_replay()
+{
+    print_message(Message::REPLAY_ASK);
+    //run loop until the user enters the right character
+    while(true)
+    {
+        std::cout << "Enter Y or N: ";
+        switch (get_char())
+        {
+            case 'y':
+            case 'Y':
+                return true;
+            case 'n':
+            case 'N':
+                return false;
+            default:
+                std::cout<<"Please enter only Y or N.\n";
+                ignore_line();
+        }
+    }
+}
 void init_game(int num_of_tries)
 {
-    std::cout<<"Let's play! I'm thinking of a number. You have "
-    <<num_of_tries<<" tries to guess what it is.\n";
+    print_message(Message::WELCOME,num_of_tries);
     for(int guess=1;guess<=num_of_tries;++guess)
     {
         int num{get_int("Guess No."+std::to_string(guess))};
         std::cout<<"You entered "<<num<<'\n';
     }
 }
-void run_game()
+void end_game()
 {
-    print_message(Message::WELCOME);
+    print_message(Message::END_GAME);
+}
+void run_game(int num_of_tries)
+{
+    /*
+    while(true)
+    {
+        init_game(num_of_tries);
+        if(!ask_for_replay())
+        {
+            end_game();
+            return;
+        }
+    }
+     */
+    if(ask_for_replay())
+        std::cout<<"Play again\n";
+    else
+        std::cout<<"End game\n";
 }
