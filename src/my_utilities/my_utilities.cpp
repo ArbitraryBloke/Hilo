@@ -22,7 +22,7 @@ int get_int(std::string_view msg)
         {
             std::cin.clear();//put cin back to 'normal' operation mode
             ignore_line();
-            std::cerr<<"You've entered an invalid integer. Please try again.\n";
+            std::cout<<"You've entered an invalid integer. Please try again.\n";
         }
         else
         {

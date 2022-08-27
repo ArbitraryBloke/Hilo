@@ -12,6 +12,7 @@ enum class Message
     GUESS_TOO_HIGH,
     GUESS_TOO_LOW,
     GUESS_CORRECT,
+    TRIES_EXHAUSTED,
     WELCOME,
     REPLAY_ASK,
     END_GAME,
@@ -30,8 +31,11 @@ void print_message(const Message& message,int num_of_tries=0)
         case Message::GUESS_CORRECT:
             std::cout<<"Correct! You've won!\n";
             break;
+        case Message::TRIES_EXHAUSTED:
+            std::cout<<"You've ran out of tries. GAME OVER.\n";
+            break;
         case Message::WELCOME:
-            std::cout<<"Let's play! I'm thinking of a number. You have "
+            std::cout<<"Let's play! I'm thinking of a number from 1-100. You have "
                      <<num_of_tries<<" tries to guess what it is.\n";
             break;
         case Message::REPLAY_ASK:
@@ -68,11 +72,25 @@ bool ask_for_replay()
 void init_game(int num_of_tries)
 {
     print_message(Message::WELCOME,num_of_tries);
+    int random_num{get_random_int(1,100)};
     for(int guess=1;guess<=num_of_tries;++guess)
     {
-        int num{get_int("Guess No."+std::to_string(guess))};
-        std::cout<<"You entered "<<num<<'\n';
+        int user_guess{get_int("Guess No."+std::to_string(guess))};
+        if(user_guess>random_num)
+        {
+            print_message(Message::GUESS_TOO_HIGH);
+        }
+        else if(user_guess<random_num)
+        {
+            print_message(Message::GUESS_TOO_LOW);
+        }
+        else
+        {
+            print_message(Message::GUESS_CORRECT);
+            return;
+        }
     }
+    print_message(Message::TRIES_EXHAUSTED);
 }
 void end_game()
 {
@@ -80,7 +98,6 @@ void end_game()
 }
 void run_game(int num_of_tries)
 {
-    /*
     while(true)
     {
         init_game(num_of_tries);
@@ -90,9 +107,4 @@ void run_game(int num_of_tries)
             return;
         }
     }
-     */
-    if(ask_for_replay())
-        std::cout<<"Play again\n";
-    else
-        std::cout<<"End game\n";
 }
