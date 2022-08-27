@@ -7,6 +7,8 @@
 #include<string>
 #include<cassert>
 
+constexpr int NUM_OF_TRIES=7;
+constexpr int MAX_NUMBER=100;
 enum class Message
 {
     GUESS_TOO_HIGH,
@@ -35,7 +37,8 @@ void print_message(const Message& message,int num_of_tries=0)
             std::cout<<"You've ran out of tries. GAME OVER.\n";
             break;
         case Message::WELCOME:
-            std::cout<<"Let's play! I'm thinking of a number from 1-100. You have "
+            std::cout<<"Let's play! I'm thinking of a number from 1-"
+            <<MAX_NUMBER<<". You have "
                      <<num_of_tries<<" tries to guess what it is.\n";
             break;
         case Message::REPLAY_ASK:
@@ -96,11 +99,11 @@ void end_game()
 {
     print_message(Message::END_GAME);
 }
-void run_game(int num_of_tries)
+void run_game()
 {
     while(true)
     {
-        init_game(num_of_tries);
+        init_game(NUM_OF_TRIES);
         if(!ask_for_replay())
         {
             end_game();

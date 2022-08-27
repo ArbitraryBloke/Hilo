@@ -5,6 +5,6 @@
 #ifndef HILO_GAME_H
 #define HILO_GAME_H
 
-void run_game(int num_of_tries);
+void run_game();
 
 #endif //HILO_GAME_H
