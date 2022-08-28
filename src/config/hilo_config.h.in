@@ -1,0 +1,8 @@
+#ifndef HILO_CONFIG_H_IN
+#define HILO_CONFIG_H_IN
+
+#define Hilo_VERSION_MAJOR "${Hilo_VERSION_MAJOR}"
+#define Hilo_VERSION_MINOR "${Hilo_VERSION_MINOR}"
+#define Hilo_VERSION_PATCH "${Hilo_VERSION_PATCH}"
+
+#endif
