@@ -19,7 +19,7 @@ add_executable(hilo main.cpp)
 target_include_directories(hilo PUBLIC
         "${PROJECT_BINARY_DIR}"
         )
-configure_file(config/hilo_config.h.in config/hilo_config.h)
+configure_file(hilo_config.h.in hilo_config.h)
 
 target_link_libraries(game PRIVATE my_utilities)
 target_link_libraries(hilo PRIVATE game)

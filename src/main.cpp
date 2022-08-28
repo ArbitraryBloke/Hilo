@@ -1,6 +1,6 @@
 
 #include "game.h"
-#include "config/hilo_config.h"
+#include "hilo_config.h"
 #include<iostream>
 
 int main()
