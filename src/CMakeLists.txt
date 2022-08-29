@@ -8,9 +8,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 20)
 
 check_ipo_supported(RESULT IPO_SUPPORTED)
-if(IPO_SUPPORTED)
+if (IPO_SUPPORTED)
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
-endif()
+endif ()
+if (MSVC)
+    add_compile_options(/W4)
+else ()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+
+endif ()
 
 add_subdirectory(game)
 add_subdirectory(my_utilities)

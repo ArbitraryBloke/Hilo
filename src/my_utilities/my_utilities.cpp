@@ -19,6 +19,8 @@ int get_int(std::string_view msg)
         int num{};
         std::cout << msg << ": ";
         std::cin >> num;
+        //check for EOF
+        if (std::cin.eof())exit(0);
         if (!std::cin)//extraction failed
         {
             std::cin.clear();//put cin back to 'normal' operation mode
@@ -36,6 +38,8 @@ char get_char()
 {
     char c{};
     std::cin >> c;
+    //check for EOF
+    if (std::cin.eof())exit(0);
     return c;
 }
 
