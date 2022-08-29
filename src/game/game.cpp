@@ -20,7 +20,7 @@ enum class Message
     END_GAME,
 };
 
-void print_message(const Message& message, int num_of_tries = 0)
+static void print_message(const Message& message, int num_of_tries = 0)
 {
     switch (message)
     {
@@ -53,7 +53,7 @@ void print_message(const Message& message, int num_of_tries = 0)
     }
 }
 
-bool ask_for_replay()
+static bool ask_for_replay()
 {
     print_message(Message::REPLAY_ASK);
     //run loop until the user enters the right character
@@ -75,7 +75,7 @@ bool ask_for_replay()
     }
 }
 
-void init_game(int num_of_tries)
+static void init_game(int num_of_tries)
 {
     print_message(Message::WELCOME, num_of_tries);
     int random_num{get_random_int(1, 100)};
@@ -97,7 +97,7 @@ void init_game(int num_of_tries)
     print_message(Message::TRIES_EXHAUSTED);
 }
 
-void end_game()
+static void end_game()
 {
     print_message(Message::END_GAME);
 }
