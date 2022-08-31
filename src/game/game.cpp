@@ -7,7 +7,7 @@
 #include<string>
 #include<cassert>
 
-constexpr int MAX_NUMBER = 100;
+static constexpr int MAX_NUMBER = 100;
 enum class Message
 {
     GUESS_TOO_HIGH,
