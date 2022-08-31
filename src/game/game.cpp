@@ -1,13 +1,12 @@
 //
 // Created by ajay on 8/26/22.
-// contains all the game logic
+//
 #include "game.h"
 #include"my_utilities.h"
 #include<iostream>
 #include<string>
 #include<cassert>
 
-constexpr int NUM_OF_TRIES = 7;
 constexpr int MAX_NUMBER = 100;
 enum class Message
 {
@@ -56,7 +55,6 @@ static void print_message(const Message& message, int num_of_tries = 0)
 static bool ask_for_replay()
 {
     print_message(Message::REPLAY_ASK);
-    //run loop until the user enters the right character
     while (true)
     {
         std::cout << "Enter Y or N: ";
@@ -75,10 +73,17 @@ static bool ask_for_replay()
     }
 }
 
-static void init_game(int num_of_tries)
+static int get_num_of_tries()
 {
+    const int num_of_tries{get_int("Enter the number of tries you want")};
+    return num_of_tries;
+}
+
+static void init_game()
+{
+    const int num_of_tries{get_num_of_tries()};
     print_message(Message::WELCOME, num_of_tries);
-    int random_num{get_random_int(1, 100)};
+    const int random_num{get_random_int(1, 100)};
     for (int guess = 1; guess <= num_of_tries; ++guess)
     {
         int user_guess{get_int("Guess No." + std::to_string(guess))};
@@ -106,7 +111,7 @@ void run_game()
 {
     while (true)
     {
-        init_game(NUM_OF_TRIES);
+        init_game();
         if (!ask_for_replay())
         {
             end_game();
