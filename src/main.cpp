@@ -5,7 +5,7 @@
 #include<string>
 #include <iomanip>
 
-static void print_info()
+static void print_version_and_usage()
 {
     std::cout << "Hilo v" << Hilo_VERSION_MAJOR << '.'
               << Hilo_VERSION_MINOR << '.' << Hilo_VERSION_PATCH << '\n';
@@ -20,7 +20,7 @@ int main(int argc, const char** argv)
         run_game();
     } else
     {
-        print_info();
+        print_version_and_usage();
     }
     return 0;
 }

@@ -7,7 +7,8 @@
 #include<string>
 #include<cassert>
 
-static constexpr int MAX_NUMBER = 100;
+static constexpr int HILO_UPPER_BOUND = 100;
+static constexpr int MAX_TRIES = 7;
 enum class Message
 {
     GUESS_TOO_HIGH,
@@ -19,7 +20,7 @@ enum class Message
     END_GAME,
 };
 
-static void print_message(const Message& message, int num_of_tries = 0)
+static void print_message(const Message& message)
 {
     switch (message)
     {
@@ -38,8 +39,8 @@ static void print_message(const Message& message, int num_of_tries = 0)
             break;
         case Message::WELCOME:
             std::cout << "Let's play! I'm thinking of a number from 1-"
-                      << MAX_NUMBER << ". You have "
-                      << num_of_tries << " tries to guess what it is.\n";
+                      << HILO_UPPER_BOUND << ". You have "
+                      << MAX_TRIES << " tries to guess what it is.\n";
             break;
         case Message::REPLAY_ASK:
             std::cout << "Would you like to play again?\n";
@@ -73,18 +74,11 @@ static bool ask_for_replay()
     }
 }
 
-static int get_num_of_tries()
-{
-    const int num_of_tries{get_int("Enter the number of tries you want")};
-    return num_of_tries;
-}
-
 static void init_game()
 {
-    const int num_of_tries{get_num_of_tries()};
-    print_message(Message::WELCOME, num_of_tries);
+    print_message(Message::WELCOME);
     const int random_num{get_random_int(1, 100)};
-    for (int guess = 1; guess <= num_of_tries; ++guess)
+    for (int guess = 1; guess <= MAX_TRIES; ++guess)
     {
         int user_guess{get_int("Guess No." + std::to_string(guess))};
         if (user_guess > random_num)
