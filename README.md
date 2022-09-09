@@ -1,2 +1,2 @@
 # Hilo
-Guess the random number.
+Guess the random number picked by the program.
