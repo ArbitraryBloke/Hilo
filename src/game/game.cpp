@@ -3,9 +3,11 @@
 //
 #include "game.h"
 #include"my_utilities.h"
+#include"hilo_config.h"
 #include<iostream>
 #include<string>
 #include<cassert>
+#include <iomanip>
 
 static constexpr int HILO_UPPER_BOUND = 100;
 static constexpr int MAX_TRIES = 7;
@@ -101,8 +103,21 @@ static void end_game()
     print_message(Message::END_GAME);
 }
 
-void run_game()
+static void print_version_and_usage()
 {
+    std::cout << "Hilo v" << Hilo_VERSION_MAJOR << '.'
+              << Hilo_VERSION_MINOR << '.' << Hilo_VERSION_PATCH << '\n';
+    std::cout << "Usage: hilo\n"
+              << std::setw(16) << "hilo run\n";
+}
+
+void run_game(bool print_info)
+{
+    if(print_info)
+    {
+        print_version_and_usage();
+        return;
+    }
     while (true)
     {
         init_game();
