@@ -7,3 +7,10 @@ target_include_directories(game PUBLIC
         include
         "${PROJECT_BINARY_DIR}"
         )
+install(TARGETS game DESTINATION lib)
+install(FILES include/game.h
+        TYPE INCLUDE
+        )
+install(FILES "${PROJECT_BINARY_DIR}/hilo_config.h"
+        TYPE INCLUDE
+        )

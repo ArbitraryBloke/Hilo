@@ -32,3 +32,5 @@ target_link_libraries(hilo PRIVATE game)
 
 target_link_libraries(game PRIVATE my_utilities)
 target_link_libraries(hilo PRIVATE game)
+
+install(TARGETS hilo DESTINATION bin)
